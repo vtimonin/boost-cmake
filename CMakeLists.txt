@@ -24,40 +24,42 @@ if(USE_ANDROID)
   set(CMAKE_ASM_COMPILER_TARGET "${CMAKE_CXX_COMPILER_TARGET}")
 endif()
 
-set(BOOST_LIBS
-  # Header only libs
-  header
+if(NOT DEFINED BOOST_LIBS)
+  set(BOOST_LIBS
+    # Header only libs
+    header
 
-  # Compiled libs
-  atomic
-  chrono
-  container
-  context
-  coroutine
-  date_time
-  exception
-  fiber
-  filesystem
-  graph
-  iostreams
-  locale
-  log
-  math
-  mpi
-  graph_parallel # depends on mpi, so needs to be put after it
-  program_options
-  #python # complex module
-  random
-  regex
-  serialization
-  signals
-  system
-  unit_test_framework
-  thread
-  timer
-  type_erasure
-  wave
-)
+    # Compiled libs
+    atomic
+    chrono
+    container
+    context
+    coroutine
+    date_time
+    exception
+    fiber
+    filesystem
+    graph
+    iostreams
+    locale
+    log
+    math
+    mpi
+    graph_parallel # depends on mpi, so needs to be put after it
+    program_options
+    #python # complex module
+    random
+    regex
+    serialization
+    signals
+    system
+    unit_test_framework
+    thread
+    timer
+    type_erasure
+    wave
+  )
+endif()
 
 foreach(lib ${BOOST_LIBS})
   include("libs/${lib}.cmake")
